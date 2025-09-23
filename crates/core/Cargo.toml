@@ -11,7 +11,7 @@ documentation = "https://github.com/mush42/libtashkeel"
 [features]
 default = ["ort", "rayon"]
 rayon = ["dep:rayon"]
-ort = ["dep:ort"]
+ort = ["dep:ort", "dep:ort-sys"]
 ort-dylib = ["ort/load-dynamic"]
 
 [dependencies]
@@ -25,8 +25,12 @@ serde_json = "1.0.89"
 thiserror = "1.0.47"
 
 [dependencies.ort]
-version = "2.0.0-rc.9"
+version = "=2.0.0-rc.9"
+optional = true
+
+[dependencies.ort-sys]
+version = "=2.0.0-rc.9"
 optional = true
 
 [dev-dependencies.ort]
-version = "2.0.0-rc.9"
+version = "=2.0.0-rc.9"
