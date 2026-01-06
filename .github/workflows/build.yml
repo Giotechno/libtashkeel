@@ -1,0 +1,27 @@
+name: Build libtashkeel Win32
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        target: i686-pc-windows-msvc
+        override: true
+
+    - name: Build
+      run: cargo build --release --target i686-pc-windows-msvc
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: libtashkeel-win32
+        path: target/i686-pc-windows-msvc/release/*
